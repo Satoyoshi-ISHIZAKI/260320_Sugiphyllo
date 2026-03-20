@@ -1,0 +1,18 @@
+# Ignore R environment files
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+
+# Ignore data files (avoid tracking large datasets)
+data/raw/*
+
+# Ignore files with private information 
+scripts/path.R
+
+# Ignore renv folders (if using renv for package management)
+renv/library/
+renv/staging/
+
+# Ignore cache or output files
+output/*
