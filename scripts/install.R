@@ -21,12 +21,6 @@ if(!requireNamespace("BiocManager")){
   }
 BiocManager::install("phyloseq")
 
-## qiime2R
-if (!requireNamespace("devtools", quietly = TRUE)){install.packages("devtools")}
-devtools::install_github("jbisanz/qiime2R")
-
-
-
 ### yet to be done
 
 # ANOCOM-BC

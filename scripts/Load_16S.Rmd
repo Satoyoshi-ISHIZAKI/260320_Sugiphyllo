@@ -10,7 +10,6 @@ date: "2026-03-20"
 
 ```{r}
 # Load necessary libraries
-library(qiime2R)
 library(tidyverse)
 # Load the 16S amplicon sequence data from the specified directory
 # The path to the qza files is defined in "path_qm" in "scripts
