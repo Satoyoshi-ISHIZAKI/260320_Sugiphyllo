@@ -4,16 +4,29 @@ output: html_document
 date: "2026-03-20"
 ---
 
-#### Load 16S amplicon sequence data from qza files in the directory written in "path_qm" in "scripts/path.R". The data is imported using the "qiime2R" package, which allows for seamless integration of QIIME 2 artifacts into R for downstream analysis.
+#### Load 16S amplicon sequence data from qza files in the directory written in "path_qm" in "scripts/path.R".
 
 <details><summary>Settings and preps</summary><div>
+
+## load packages and paths
 
 ```{r}
 # Load necessary libraries
 library(tidyverse)
+library(phyloseq)
+library(qiime2R)
 # Load the 16S amplicon sequence data from the specified directory
 # The path to the qza files is defined in "path_qm" in "scripts
 source("../scripts/path.R")
 ```
 
 </div></details>
+
+# import data
+
+```{r}
+# 16S
+table_16S <- read_qza(paste0(path_qm, "/Analysis/NoContam/table_16S_nocontam.qza"))
+tree_16S <- read_qza(paste0(path_qm, "/Analysis/phylogeny/tree_rooted_16S.qza"))
+```
+
