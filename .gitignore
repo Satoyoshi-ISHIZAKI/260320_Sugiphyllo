@@ -7,12 +7,30 @@
 # Ignore data files (avoid tracking large datasets)
 data/raw/*
 data/*
-# Ignore files with private information 
+
+# Ignore files with private information / configuration
 scripts/path.R
+config.R
 
 # Ignore renv folders (if using renv for package management)
 renv/library/
 renv/staging/
 
-# Ignore cache or output files
+# Ignore output and results (regenerated on demand)
+results/figures/*
+results/tables/*
+results/cached/*
 output/*
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore compiled R files and temporary rendering
+*.Rmd_cache
+*.Rmd_files
+*.nb.html
