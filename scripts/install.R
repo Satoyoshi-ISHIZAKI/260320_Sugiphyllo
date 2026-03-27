@@ -4,11 +4,14 @@ install.packages("devtools")
 install.packages("BiocManager")
 install.packages("readxl")
 install.packages("tidyverse")
+
+### yet to be done
 install.packages("ggfortify")
 install.packages("ggeffects")
 install.packages("ggnewscale")
 install.packages("vegan")
 install.packages("dichromat")
+###
 
 ## Bioconductor
 if (!require("BiocManager", quietly = TRUE))

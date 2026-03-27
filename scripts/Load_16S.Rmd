@@ -12,12 +12,11 @@ date: "2026-03-20"
 
 ```{r}
 # Load necessary libraries
+library(readxl)
+library(stringr)
 library(tidyverse)
 library(phyloseq)
 library(qiime2R)
-# Load the 16S amplicon sequence data from the specified directory
-# The path to the qza files is defined in "path_qm" in "scripts
-source("../scripts/path.R")
 ```
 
 </div></details>
@@ -26,7 +25,21 @@ source("../scripts/path.R")
 
 ```{r}
 # 16S
-table_16S <- read_qza(paste0(path_qm, "/Analysis/NoContam/table_16S_nocontam.qza"))
-tree_16S <- read_qza(paste0(path_qm, "/Analysis/phylogeny/tree_rooted_16S.qza"))
-```
+table_16S <- read_qza("data/Analysis/NoContam/table_16S_nocontam.qza")
+tree_16S <- read_qza("data/Analysis/phylogeny/tree_rooted_16S.qza")
+tax_16S <- read_qza("data/Analysis/taxa/classification_16S.qza")
+dadastats_16S_2312 <- read_tsv("data/Analysis/denoised/231202/dada2_output_16S/stats.tsv")
+dadastats_16S_2512 <- read_tsv("data/Analysis/denoised/dada2_output_16S/stats.tsv")
 
+metadata <- read.csv("data/Metadata/samplesheet_Sugi.csv")
+metadata <- metadata %>%
+  dplyr::mutate(Sample_Name = formatC(Sample_Name, width = 4, flag = "0")) %>%
+  # filter out the indifferent samples
+  dplyr::filter(Sample_Name %in% colnames(table_16S$data)) %>%
+  dplyr::select(-grep(nrow(.), colSums(is.na(.)))) # remove NA columns
+
+# capitalize the first letter of column names
+colnames(metadata) <- str_replace_all(colnames(metadata), "^.", toupper)
+
+meta_loc <- read.csv("data/Metadata/pop_climate_pca.csv")
+```
